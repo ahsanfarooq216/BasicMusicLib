@@ -8,28 +8,36 @@ namespace BasicMusicLib
 {
    public static class SongManager
     {
-        public static void GetSampleMusic(ObservableCollection<Song> songs)
+        public static ObservableCollection<Song> GetAllMusic(ObservableCollection<Song> songs)
         {
-            var sampleSongs = getSampleMusic();
+            var sampleSongs = GetSampleMusic();
             songs.Clear();
             sampleSongs.ForEach(s => songs.Add(s));
+            return songs;
         }
 
         public static void GetSongsByArtist(ObservableCollection<Song> songs, string artist)
         {
-            var allSongs = getSampleMusic();
+            var allSongs = GetAllMusic(songs);
             var filteredSongs = allSongs.Where(s => String.Equals(s.Artist.ToLower(), artist.ToLower())).ToList();
             songs.Clear();
             filteredSongs.ForEach(s => songs.Add(s));
         }
         public static void GetSongsByTitle(ObservableCollection<Song> songs, string title)
         {
-            var allSongs = getSampleMusic();
+            var allSongs = GetAllMusic(songs);
             var filteredSongs = allSongs.Where(s => String.Equals(s.Title.ToLower(), title.ToLower())).ToList();
             songs.Clear();
             filteredSongs.ForEach(s => songs.Add(s));
         }
-        private static List<Song> getSampleMusic()
+        public static void GetSongsByAlbum(ObservableCollection<Song> songs, string album)
+        {
+            var allSongs = GetAllMusic(songs);
+            var filteredSongs = allSongs.Where(s => String.Equals(s.Title.ToLower(), album.ToLower())).ToList();
+            songs.Clear();
+            filteredSongs.ForEach(s => songs.Add(s));
+        }
+        private static List<Song> GetSampleMusic()
         {
             var sampleSongs = new List<Song>();
             sampleSongs.Add(new Song("derek", "annalise", $"/Assets/SampleMusic/Derek_Clegg_-_Annalise.mp3"));

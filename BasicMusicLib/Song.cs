@@ -9,7 +9,11 @@ namespace BasicMusicLib
         private string _audioFilePath;
         public string Title { get; set; }
         public string Artist { get; set; }
-        public string Album { get; set; }
+        public string Album
+        {
+            get { return Album; }
+            set { }
+        }
         public string Genre { get; set; }
         public string ImagePath { get; set; }
         public string AudioFilePath

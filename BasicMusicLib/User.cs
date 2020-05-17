@@ -12,13 +12,14 @@ namespace BasicMusicLib
         public string Username { get; set; }
         public string Password { get; set; }
         public ObservableCollection<Song> MyMusicCollection { get; set; }
-        public User(string name, string password)
+        StreamReader sr;
+        StreamWriter sw;
+        public User(string uName, string password)
         {
-            Username = name;
+            Username = uName;
             Password = password;
-            StreamWriter sr = new StreamWriter($"/{name}.txt");
             MyMusicCollection = new ObservableCollection<Song>();
-            SongManager.GetSampleMusic(MyMusicCollection);
+            MyMusicCollection = SongManager.GetAllMusic(MyMusicCollection);
         }
     }
 }
